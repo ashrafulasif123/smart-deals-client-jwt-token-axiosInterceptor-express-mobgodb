@@ -7,6 +7,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 export const Login = () => {
   const { loading, setLoading } = useAuth();
   const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
   const emailRef = useRef();

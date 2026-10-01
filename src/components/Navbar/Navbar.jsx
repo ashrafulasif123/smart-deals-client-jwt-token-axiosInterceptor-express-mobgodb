@@ -1,11 +1,18 @@
 import { Link, NavLink } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import { getCartIds } from "../../utilities/localstorage";
 
-export const Navbar = ({ cart }) => {
+export const Navbar = () => {
   const { user, loading, logOut } = useAuth();
   const handleLogOut = () => {
     logOut();
   };
+  const [cartIds, setCartIds] = useState([]);
+  const [refetchCart, setRefetchCart] = useState(false);
+  useEffect(() => {
+    setCartIds(getCartIds());
+  }, [refetchCart]);
   const link =
     "px-3 py-2 text-gray-700 hover:bg-blue-400 hover:text-white rounded-md";
   const activeLink = "bg-blue-400 text-white";
@@ -50,7 +57,9 @@ export const Navbar = ({ cart }) => {
           {/* Right Button */}
           <Link to="/cart2" className="btn">
             Cart
-            <div className="badge badge-sm badge-secondary">{cart.length}</div>
+            <div className="badge badge-sm badge-secondary">
+              {cartIds.length}
+            </div>
           </Link>
 
           {loading ? (

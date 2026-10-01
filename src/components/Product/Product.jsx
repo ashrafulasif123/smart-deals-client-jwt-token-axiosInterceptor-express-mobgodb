@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { Link, useOutletContext } from "react-router";
+import { Link } from "react-router";
 
 export const Product = ({
   product,
@@ -8,9 +8,8 @@ export const Product = ({
   productDetailsModal,
   productsUpdateModal,
   handleDeleteProduct,
+  handleAddCart,
 }) => {
-  const { handleAddCart } = useOutletContext();
-
   const handleProductDetailsModal = () => {
     productDetailsModal.current.showModal();
     setProduct(product);
@@ -115,7 +114,7 @@ export const Product = ({
               View Details
             </Link>
             <button
-              onClick={() => handleAddCart(id, product)}
+              onClick={() => handleAddCart(id)}
               className="btn btn-warning"
             >
               Add to Cart

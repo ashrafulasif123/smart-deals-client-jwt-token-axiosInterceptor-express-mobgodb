@@ -50,11 +50,8 @@ const router = createBrowserRouter([
       // },
       {
         path: "cart2",
-        element: (
-          <PrivateRoute>
-            <Cart2></Cart2>,
-          </PrivateRoute>
-        ),
+        element: <Cart2></Cart2>,
+        loader: () => axiosInstance.get("/"),
       },
       {
         path: "myProducts",

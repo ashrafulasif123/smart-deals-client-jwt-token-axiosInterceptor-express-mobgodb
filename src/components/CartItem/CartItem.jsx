@@ -1,8 +1,17 @@
-import { Link } from "react-router";
-
-export const CartItem = ({ product, handleDeleteCartItem }) => {
-  const { id, title, price_min, price_max, category, image, location } =
-    product;
+export const CartItem = ({
+  product,
+  handleDeleteCartItem,
+  handleAddBidModal,
+}) => {
+  const {
+    _id: id,
+    title,
+    price_min,
+    price_max,
+    category,
+    image,
+    location,
+  } = product;
   return (
     <tr>
       <td>
@@ -22,9 +31,12 @@ export const CartItem = ({ product, handleDeleteCartItem }) => {
       <td>{location}</td>
       <td>
         <div className="flex gap-2">
-          <Link to={`/viewDetails/${id}`} className="btn btn-sm btn-primary">
-            View Details
-          </Link>
+          <button
+            onClick={() => handleAddBidModal(product)}
+            className="btn btn-sm btn-primary"
+          >
+            Add Bid
+          </button>
           <button
             onClick={() => handleDeleteCartItem(id)}
             className="btn btn-sm btn-error"
